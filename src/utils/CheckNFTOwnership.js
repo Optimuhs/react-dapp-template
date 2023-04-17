@@ -11,7 +11,7 @@ const provider = new Web3Provider("goerli");
 const signer = new ethers.Wallet(provider);
 
 // Create a contract instance for the ERC721 contract
-const erc721Contract = new ethers.Contract(contractAddress, abi, signer);
+const erc721Contract = new ethers.Contract(process.env.REACT_APP_NFT_CONTRACT_ADDRESS, abi, signer);
 
 // Get the number of ERC721 tokens owned by the user
 const tokenCount = await erc721Contract.balanceOf(userAddress);
