@@ -1,38 +1,56 @@
 import { Web3Provider } from "@ethersproject/providers";
-import { useContext } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { WalletContext } from "../WalletContext";
 
-const ConnectWalletButton = () => {
-  const { wallet ,setWallet } = useContext(WalletContext);
+export const ConnectWalletButton = () => {
+  const [{ signer, setSigner, provider, setProvider }] =
+    useContext(WalletContext);
 
-  const connectWallet = async() => {
+  // const [] = useContext(WalletContext);
+  const [userAddress, setUserAddress] = useState("");
+
+  useEffect(() => {
+    // Fetch the locally stored item from localStorage
+    const storedValue = localStorage.getItem("userAddress");
+
+    // Update the button value with the stored value
+    if (userAddress === "") {
+      setUserAddress(storedValue);
+    }
+  }, []);
+
+  const connectWallet = async () => {
     // Connect to the wallet here and set the wallet state
-    if(window.ethereum){
-        if(!wallet){
-            await window.ethereum.request({ method: "eth_requestAccounts" });
-            const provider = new Web3Provider(window.ethereum);
-            const tsigner = provider.getSigner()
-            const address = await tsigner.getAddress()
-            setWallet(address);
-
-        } else{
-          toast('Disconnecting your wallet', {
-            position: "top-right",
-            autoClose: 900,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
-            setWallet(null)
-        }
-    }else{
-      
-      toast('Install your wallet', {
+    if (window.ethereum) {
+      if (!signer) {
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+        const tprovider = new Web3Provider(window.ethereum);
+        const tsigner = tprovider.getSigner();
+        const address = await tsigner.getAddress();
+        setSigner(tsigner);
+        setProvider(tprovider);
+        setUserAddress(address);
+        localStorage.setItem("userAddress", address);
+      } else {
+        toast("Disconnecting your wallet", {
+          position: "top-right",
+          autoClose: 900,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setSigner(null);
+        setProvider(null);
+        localStorage.removeItem("userAddress");
+        setUserAddress("Connect Wallet");
+      }
+    } else {
+      toast("Install your wallet", {
         position: "top-right",
         autoClose: 900,
         hideProgressBar: false,
@@ -41,18 +59,26 @@ const ConnectWalletButton = () => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     }
-    
-    
   };
 
-  return( 
+  // const getUserAddress = () => {
+  //   const userAddress = JSON.parse(localStorage.getItem("userAddress"));
+  //   return `${userAddress.slice(0, 4)}...${userAddress.slice(
+  //     userAddress.length - 4,
+  //     userAddress.length
+  //   )}`;
+  // };
+
+  return (
     <button onClick={connectWallet}>
-        {wallet ? `${wallet.slice(0,4)}...${wallet.slice(wallet.length - 4, wallet.length)}` : "Connect Wallet" }
-    </button> 
+      {signer
+        ? `${userAddress.slice(0, 4)}...${userAddress.slice(
+            userAddress.length - 4,
+            userAddress.length
+          )}`
+        : "Connect Wallet"}
+    </button>
   );
 };
-
-export { ConnectWalletButton };
-

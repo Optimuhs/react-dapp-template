@@ -1,19 +1,16 @@
-import { createContext, useState } from "react";
-const WalletContext = createContext();
+import React, { createContext, useState } from "react";
 
-const WalletProvider = ({ children }) => {
-  const [wallet, setWallet] = useState(null);
-  const [signer, setSigner] = useState(null)
+export const WalletContext = createContext();
+
+export const WalletProvider = ({ children }) => {
+  const [signer, setSigner] = useState(null);
+  const [provider, setProvider] = useState(null);
+
   return (
-    <WalletContext.Provider value={[{ wallet, setWallet }, {signer, setSigner}]}>
+    <WalletContext.Provider
+      value={{ signer, setSigner, provider, setProvider }} // Update the value to an object with properties
+    >
       {children}
     </WalletContext.Provider>
   );
 };
-
-export {
-  WalletContext,
-  WalletProvider
-};
-
-
