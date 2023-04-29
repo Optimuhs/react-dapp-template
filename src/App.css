@@ -32,43 +32,133 @@
   background-color: beige;
   display: flex;
   flex-direction: row;
-  align-items: center;
-
-  padding: 50px 5%;
+  padding: 5%;
 }
 
-.HeaderContainer h1 {
-  margin: 0;
-  margin-right: auto;
-}
-
-.NavContainer {
+.HamburgerWrapper {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+ul {
+  list-style-type: none;
+  height: 100%;
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  padding-left: 1rem;
+  margin: 0;
+  background-color: coral;
 }
 
 .NavLink {
-  margin: 0 1rem;
+  color: beige;
 }
 
-.ConnectWallet,
-.MintButton {
-  height: 50px;
-  width: 170px;
-  border-radius: 12px;
-  box-shadow: 2px 2px 2px red;
-  font-size: 1.2rem;
+#Logo {
+  color: coral;
 }
 
-.ContentWrapper {
-  margin: 10px;
-}
-
-.MintContent {
+.Sidebar {
+  left: 0;
+  top: 0;
+  position: absolute;
+  background-color: coral;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.Show {
+  transition-timing-function: ease-in;
+  transition: 0.7s;
+  transform: translateX(100%);
+}
+
+.Hidden {
+  transition-timing-function: ease-out;
+  transition: 0.7s;
+  transform: translateX(-100%);
+}
+
+.NavContainer {
+  display: none;
+}
+
+/* Tablet or larger */
+@media screen and (min-width: 760px) {
+  .HeaderContainer {
+    align-items: center;
+    letter-spacing: 1px;
+    padding: 50px 5%;
+  }
+
+  .HeaderContainer h1 {
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .HamburgerWrapper {
+    display: none;
+  }
+
+  .NavContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    background-color: beige;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  .NavLink {
+    margin: 0 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    color: coral;
+  }
+
+  .ConnectWallet,
+  .MintButton {
+    height: 50px;
+    width: 170px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px red;
+    font-size: 1.2rem;
+  }
+
+  .ContentWrapper {
+    margin: 10px;
+  }
+
+  .MintContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Sidebar {
+    display: none;
+  }
+
+  .Hidden {
+    display: none;
+  }
 }
