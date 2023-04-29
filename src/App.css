@@ -27,3 +27,48 @@
 .App-link {
   color: #61dafb;
 }
+
+.HeaderContainer {
+  background-color: beige;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 50px 5%;
+}
+
+.HeaderContainer h1 {
+  margin: 0;
+  margin-right: auto;
+}
+
+.NavContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+}
+
+.NavLink {
+  margin: 0 1rem;
+}
+
+.ConnectWallet,
+.MintButton {
+  height: 50px;
+  width: 170px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 2px red;
+  font-size: 1.2rem;
+}
+
+.ContentWrapper {
+  margin: 10px;
+}
+
+.MintContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

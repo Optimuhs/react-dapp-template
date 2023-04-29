@@ -69,6 +69,7 @@ export const MintButton = () => {
       onClick={() => {
         mint();
       }}
+      className="MintButton"
     >
       {signer ? "Mint 1 NFT" : "Connect Your Wallet"}
     </button>

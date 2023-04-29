@@ -8,7 +8,6 @@ export const ConnectWalletButton = () => {
   const [{ signer, setSigner, provider, setProvider }] =
     useContext(WalletContext);
 
-  // const [] = useContext(WalletContext);
   const [userAddress, setUserAddress] = useState("");
 
   useEffect(() => {
@@ -63,16 +62,8 @@ export const ConnectWalletButton = () => {
     }
   };
 
-  // const getUserAddress = () => {
-  //   const userAddress = JSON.parse(localStorage.getItem("userAddress"));
-  //   return `${userAddress.slice(0, 4)}...${userAddress.slice(
-  //     userAddress.length - 4,
-  //     userAddress.length
-  //   )}`;
-  // };
-
   return (
-    <button onClick={connectWallet}>
+    <button onClick={connectWallet} className="ConnectWallet">
       {signer
         ? `${userAddress.slice(0, 4)}...${userAddress.slice(
             userAddress.length - 4,
