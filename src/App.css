@@ -46,19 +46,31 @@
 ul {
   list-style-type: none;
   height: 100%;
-  width: 110px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  padding-left: 1rem;
+  padding: 1rem;
   margin: 0;
   background-color: coral;
 }
 
+li {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin: 5px;
+  background-color: beige;
+}
+
 .NavLink {
-  color: beige;
+  display: flex;
+  flex-direction: column;
+  color: coral;
+  margin: 0;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
 }
 
 #Logo {
@@ -68,9 +80,12 @@ ul {
 .Sidebar {
   left: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
   position: absolute;
   background-color: coral;
   height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,7 +95,7 @@ ul {
 .Show {
   transition-timing-function: ease-in;
   transition: 0.7s;
-  transform: translateX(100%);
+  transform: translateX(80%);
 }
 
 .Hidden {
@@ -93,12 +108,20 @@ ul {
   display: none;
 }
 
+/* Wallet Connected indicator */
+.Light {
+  width: 5px;
+  height: 5px;
+  background-color: black;
+}
+
 /* Tablet or larger */
 @media screen and (min-width: 760px) {
   .HeaderContainer {
     align-items: center;
     letter-spacing: 1px;
     padding: 50px 5%;
+    padding-right: 1%;
   }
 
   .HeaderContainer h1 {
@@ -123,6 +146,17 @@ ul {
     list-style-type: none;
     background-color: beige;
   }
+
+  li {
+    box-shadow: none;
+    border-radius: 10%;
+  }
+
+  li:hover {
+    text-decoration: underline;
+    color: coral;
+  }
+
   button {
     cursor: pointer;
   }
@@ -139,7 +173,7 @@ ul {
     height: 50px;
     width: 170px;
     border-radius: 12px;
-    box-shadow: 2px 2px 2px red;
+    box-shadow: 1px 1px 1px coral;
     font-size: 1.2rem;
   }
 

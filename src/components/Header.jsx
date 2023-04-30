@@ -1,13 +1,11 @@
 import { Squash as Hamburger } from "hamburger-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { WalletContext } from "../WalletContext";
 import { ConnectWalletButton } from "./ConnectWalletButton";
 export const Header = () => {
   const [isOpen, setOpen] = useState(false);
-
-  // useEffect(() => {
-
-  // },[isOpen])
+  const [{ signer, setSigner }] = useContext(WalletContext);
 
   return (
     <div className="HeaderContainer">
@@ -17,6 +15,15 @@ export const Header = () => {
           Heading
         </h1>
       </Link>
+
+      <div
+        className={`${
+          signer !== null
+        } ? "Connected Light" : "NotConnected Light" `}
+      >
+        <span></span>
+      </div>
+
       <div className="HamburgerWrapper">
         <Hamburger
           rounded
@@ -27,25 +34,23 @@ export const Header = () => {
         />
       </div>
 
-      <div
+      <ul
         className={`${isOpen ? "Show" : "Hidden"} Sidebar`}
         style={{
           visibility: isOpen ? "visible" : "hidden",
         }}
       >
-        <ul className="Hidden">
-          <li>
-            <Link to="/minting" style={{ textDecoration: "none" }}>
-              <h2 className="NavLink">Minting</h2>
-            </Link>
-          </li>
-          <li>
-            <Link to="/staking" style={{ textDecoration: "none" }}>
-              <h2 className="NavLink">Staking</h2>
-            </Link>
-          </li>
-        </ul>
-      </div>
+        <li>
+          <Link to="/minting" style={{ textDecoration: "none" }}>
+            <h2 className="NavLink">Minting</h2>
+          </Link>
+        </li>
+        <li>
+          <Link to="/staking" style={{ textDecoration: "none" }}>
+            <h2 className="NavLink">Staking</h2>
+          </Link>
+        </li>
+      </ul>
 
       <div className="NavContainer">
         <ul>
