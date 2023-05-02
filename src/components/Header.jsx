@@ -50,6 +50,9 @@ export const Header = () => {
             <h2 className="NavLink">Staking</h2>
           </Link>
         </li>
+        <li>
+          <ConnectWalletButton />
+        </li>
       </ul>
 
       <div className="NavContainer">

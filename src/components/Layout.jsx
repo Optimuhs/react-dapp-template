@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { WalletContext } from "../WalletContext";
-import { Content } from "./Content";
 import { BlockchainErrorBoundary } from "./ErrorHandler";
 import { Header } from "./Header";
 import { Home } from "./Home";
@@ -23,11 +22,10 @@ export const Layout = () => {
           <div>
             <ToastContainer />
             <Header />
-            <Content />
             <ToastContainer />
           </div>
           {/* Insert routes that will be used, use Links to routes see Header */}
-          <div>
+          <div className="RouteWrapper">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/minting" element={<Minting />} />

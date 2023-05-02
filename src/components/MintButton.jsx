@@ -71,7 +71,7 @@ export const MintButton = () => {
       }}
       className="MintButton"
     >
-      {signer ? "Mint 1 NFT" : "Connect Your Wallet"}
+      {signer ? "Mint 1 NFT" : "Wallet Not Connected"}
     </button>
   );
 };

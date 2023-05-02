@@ -59,8 +59,25 @@ ul {
 li {
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  height: 60px;
   margin: 5px;
   background-color: beige;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+li button {
+  border: none;
+  background: none;
+  color: coral;
+}
+
+button h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: coral;
 }
 
 .NavLink {
@@ -95,7 +112,7 @@ li {
 .Show {
   transition-timing-function: ease-in;
   transition: 0.7s;
-  transform: translateX(80%);
+  transform: translateX(83%);
 }
 
 .Hidden {
@@ -113,6 +130,45 @@ li {
   width: 5px;
   height: 5px;
   background-color: black;
+}
+
+/* Content */
+.RouteWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.ContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  width: 60%;
+}
+
+.ContentWrapper h2 h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.ContentWrapper h3 {
+  margin: 0;
+}
+
+.MintButton {
+  margin: 0;
+  font-size: 1.25rem;
+  color: coral;
+  background: none;
+  box-shadow: 2px 2px 2px black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 /* Tablet or larger */
@@ -175,10 +231,6 @@ li {
     border-radius: 12px;
     box-shadow: 1px 1px 1px coral;
     font-size: 1.2rem;
-  }
-
-  .ContentWrapper {
-    margin: 10px;
   }
 
   .MintContent {
