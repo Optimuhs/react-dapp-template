@@ -165,10 +165,16 @@ button h2 {
   font-size: 1.25rem;
   color: coral;
   background: none;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 1px 1px 1px coral;
   border: 1px solid black;
   border-radius: 5px;
   padding: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.RouteWrapper {
+  margin-bottom: 5rem;
 }
 
 /* Tablet or larger */
@@ -201,6 +207,8 @@ button h2 {
     flex-direction: row;
     list-style-type: none;
     background-color: beige;
+    padding: 0;
+    margin-right: 3rem;
   }
 
   li {
@@ -226,8 +234,6 @@ button h2 {
 
   .ConnectWallet,
   .MintButton {
-    height: 50px;
-    width: 170px;
     border-radius: 12px;
     box-shadow: 1px 1px 1px coral;
     font-size: 1.2rem;

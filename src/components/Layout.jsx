@@ -7,6 +7,7 @@ import { BlockchainErrorBoundary } from "./ErrorHandler";
 import { Header } from "./Header";
 import { Home } from "./Home";
 import { Minting } from "./Minting";
+import { Results } from "./Results";
 import { Staking } from "./Staking";
 export const Layout = () => {
   const [provider, setProvider] = useState(null);
@@ -30,6 +31,7 @@ export const Layout = () => {
               <Route path="/" element={<Home />} />
               <Route path="/minting" element={<Minting />} />
               <Route path="/staking" element={<Staking />} />
+              <Route path="/results" element={<Results />} />
             </Routes>
           </div>
         </BrowserRouter>

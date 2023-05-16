@@ -26,6 +26,23 @@ export const Minting = () => {
           upon opening it and clicking on the transaction for this DApp. If
           there is an error you will be given an error in your wallet.
         </p>
+        <h3>Things to consider</h3>
+        <p>
+          There is a limit on how many of these tokens a user can mint per
+          wallet. In this case{" "}
+          <strong>
+            a user can mint up to 3 tokens per wallet as long as the current
+            mint supply is less than 10,000 tokens
+          </strong>
+          . If you receive an error when trying to mint, please take this into
+          consideration.
+        </p>
+        <p>
+          In addition, please ensure you have enough GoETH (Goerli Ether) so
+          that you can mint the token (any amount above 0), and so you can pay
+          for the transaction gas fee. The signing prompt will let you know how
+          much the transaction will cost if you are able to process it.
+        </p>
       </section>
       <br />
       <MintButton />

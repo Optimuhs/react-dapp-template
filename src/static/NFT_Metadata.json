@@ -1,0 +1,15 @@
+{
+  "name": "Optimuhs' Token",
+  "description": "This is a thank you NFT!",
+  "image": "ipfs://QmZgjP1idaKE3dDHxS1X6r5uukcKUmWrm5KHDdUBn6BEY8",
+  "attributes": [
+    {
+      "trait_type": "Thank you!",
+      "value": true
+    },
+    {
+      "trait_type": "Thank you Pepe",
+      "value": "rare"
+    }
+  ]
+}

@@ -24,7 +24,6 @@ export const ConnectWalletButton = () => {
     // Connect to the wallet here and set the wallet state
     if (window.ethereum) {
       if (!signer) {
-        console.log("test");
         await window.ethereum.request({ method: "eth_requestAccounts" });
         const tprovider = new Web3Provider(window.ethereum);
         const tsigner = tprovider.getSigner();
@@ -32,7 +31,7 @@ export const ConnectWalletButton = () => {
         setSigner(tsigner);
         setProvider(tprovider);
         setUserAddress(address);
-        console.log("test 2", address);
+
         localStorage.setItem("userAddress", address);
       } else {
         toast("Disconnecting your wallet", {
@@ -48,10 +47,9 @@ export const ConnectWalletButton = () => {
         setSigner(null);
         setProvider(null);
         localStorage.removeItem("userAddress");
-        setUserAddress(null);
+        setUserAddress("");
       }
     } else {
-      console.log("Err, install wallet");
       toast("Install your wallet", {
         position: "top-right",
         autoClose: 900,

@@ -25,10 +25,11 @@ export const Home = () => {
         <p className="ContentText">
           {" "}
           On this section of the DApp you are able to mint an ERC721 token,
-          otherwise known as an NFT, for 0.001 Goerli ETH on the Goerli Testnet
-          using Goerli ETH. If you do not have any Goerli ETH then you can get
+          otherwise known as an NFT, for anything above 0 in Goerli ETH, on the
+          Goerli Testnet. If you do not have any Goerli ETH then you can get
           some using the{" "}
-          <a href="https://goerlifaucet.com/">Alchemy Goerli ETH Faucet</a>
+          <a href="https://goerlifaucet.com/">Alchemy Goerli ETH Faucet</a> or
+          any other Goerli Faucet.
         </p>
       </section>
       <section>

@@ -12,7 +12,7 @@ export const Header = () => {
       {/* Use Link and provide a to parameter as a string with the route in Layout */}
       <Link to="/" style={{ textDecoration: "none" }}>
         <h1 className="NavLink" id="Logo">
-          Heading
+          Optimuhs' Token
         </h1>
       </Link>
 
