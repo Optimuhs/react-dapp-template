@@ -36,15 +36,16 @@ export const Home = () => {
         <h3>Staking</h3>
         <p className="ContentText">
           Staking is a process that involves a user, a token, and a smart
-          contract designed for staking. In staking a user locks their token
+          contract designed for staking. When staking, a user locks their token
           into the contract for a period of time and receives a reward token for
-          their participation. In this case, the pseudo-staking ecosystem will
+          their participation. In this case, this pseudo-staking ecosystem will
           not have a time lock, meaning that users can stake and unstake
-          whenever but they must stake a token for 1 day to receive 1 token.
+          whenever but they must stake a token for 1 day to receive 1 reward
+          token.
           <br />
           <br />
           ** Note the reward token and NFT will not have any value and are for
-          demonstration and testing purposes.
+          demonstration, testing, and learning purposes.
         </p>
       </section>
     </div>

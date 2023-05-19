@@ -32,7 +32,7 @@ export const Minting = () => {
           wallet. In this case{" "}
           <strong>
             a user can mint up to 3 tokens per wallet as long as the current
-            mint supply is less than 10,000 tokens
+            mint supply is less than 10,000 tokens.{" "}
           </strong>
           . If you receive an error when trying to mint, please take this into
           consideration.
