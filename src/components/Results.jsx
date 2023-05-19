@@ -11,7 +11,14 @@ export const Results = () => {
   } else {
     res = prop1.prop1.status;
   }
-
+  const message = (
+    <>
+      Thank you for using this DApp, you can see your token in your account
+      after connecting your wallet
+      <br />
+      <a href="https://testnets.opensea.io">here.</a>
+    </>
+  );
   return (
     <div className="ContentWrapper">
       <h1>
@@ -20,9 +27,7 @@ export const Results = () => {
       <p>
         {res
           ? "An error has occurred please check your wallet / transaction and try again."
-          : `Thank you for using this DApp, you can see your token in your account after connecting your wallet `(
-              <a href="https://testnets.opensea.io">here.</a>
-            )}
+          : message}
       </p>
       <p>
         As a reminder please ensure you have not minted more than the limit, the
