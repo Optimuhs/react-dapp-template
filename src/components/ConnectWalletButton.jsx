@@ -38,11 +38,11 @@ export const ConnectWalletButton = () => {
       if (!signer) {
         await window.ethereum.request({ method: "eth_requestAccounts" });
         let tprovider = new Web3Provider(window.ethereum);
-        let tsigner = tprovider.getSigner();
+        let tsigner = await tprovider.getSigner();
         let address = await tsigner.getAddress();
 
         const network = await tprovider.getNetwork();
-        console.log(network, "net");
+
         if (network !== expectedChainId) {
           try {
             await window.ethereum.request({
@@ -50,7 +50,7 @@ export const ConnectWalletButton = () => {
               params: [{ chainId: `0x${expectedChainId.toString(16)}` }],
             });
             tprovider = new Web3Provider(window.ethereum);
-            tsigner = tprovider.getSigner();
+            tsigner = await tprovider.getSigner();
             address = await tsigner.getAddress();
             setSigner(tsigner);
             setProvider(tprovider);
