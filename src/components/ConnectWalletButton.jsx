@@ -37,23 +37,23 @@ export const ConnectWalletButton = () => {
     if (window.ethereum) {
       if (!signer) {
         await window.ethereum.request({ method: "eth_requestAccounts" });
-
         const tprovider = new Web3Provider(window.ethereum);
         const tsigner = tprovider.getSigner();
         const address = await tsigner.getAddress();
-
         setSigner(tsigner);
-        setProvider(tprovider);
-        setUserAddress(address);
-        localStorage.setItem("userAddress", address);
-        const network = await tprovider.getNetwork();
 
+        const network = await tprovider.getNetwork();
+        console.log(network, "net");
         if (network !== expectedChainId) {
           try {
             await window.ethereum.request({
               method: "wallet_switchEthereumChain",
               params: [{ chainId: `0x${expectedChainId.toString(16)}` }],
             });
+
+            setProvider(tprovider);
+            setUserAddress(address);
+            localStorage.setItem("userAddress", address);
           } catch (err) {
             toast("Cannot connect if not on Goerli Network", {
               position: "top-right",
@@ -78,8 +78,8 @@ export const ConnectWalletButton = () => {
           progress: undefined,
           theme: "light",
         });
-        setSigner(null);
-        setProvider(null);
+        setSigner("");
+        setProvider("");
         localStorage.removeItem("userAddress");
         setUserAddress("");
       }
@@ -97,16 +97,19 @@ export const ConnectWalletButton = () => {
     }
   };
 
+  const getUserAddress = () => {
+    if (userAddress) {
+      return `${userAddress.slice(0, 4)}...${userAddress.slice(
+        userAddress.length - 4,
+        userAddress.length
+      )}`;
+    } else {
+      return "Connect Wallet";
+    }
+  };
   return (
     <button onClick={connectWallet} className="ConnectWallet">
-      <h2>
-        {signer
-          ? `${userAddress.slice(0, 4)}...${userAddress.slice(
-              userAddress.length - 4,
-              userAddress.length
-            )}`
-          : "Connect Wallet"}
-      </h2>
+      <h2>{signer ? `${getUserAddress()}` : "Connect Wallet"}</h2>
     </button>
   );
 };
