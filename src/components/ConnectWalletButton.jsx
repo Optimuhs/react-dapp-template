@@ -55,7 +55,16 @@ export const ConnectWalletButton = () => {
               params: [{ chainId: `0x${expectedChainId.toString(16)}` }],
             });
           } catch (err) {
-            console.log(err);
+            toast("Cannot connect if not on Goerli Network", {
+              position: "top-right",
+              autoClose: 900,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
           }
         }
       } else {
