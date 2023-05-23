@@ -15,6 +15,7 @@ export const MintButton = () => {
   const mint = async () => {
     if (signer) {
       try {
+        console.log(signer);
         const gasPrice = await provider.getGasPrice();
         const abi = require("../static/NFT_abi.json");
         const value = (1 * Math.pow(10, 13)).toString(); // "cost"
