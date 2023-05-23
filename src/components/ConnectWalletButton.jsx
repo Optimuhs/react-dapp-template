@@ -36,21 +36,21 @@ export const ConnectWalletButton = () => {
     // Connect to the wallet here and set the wallet state
     if (window.ethereum) {
       if (!signer) {
-        let tprovider = new Web3Provider(window.ethereum);
-        const network = await tprovider.getNetwork();
-        console.log(network);
+        let tprov = new Web3Provider(window.ethereum);
+        const network = await tprov.getNetwork();
+
         if (network !== expectedChainId) {
           try {
-            await window.ethereum.request({ method: "eth_requestAccounts" });
-
-            let tprovider = new Web3Provider(window.ethereum);
-            let tsigner = await tprovider.getSigner();
-            let address = await tsigner.getAddress();
-            const network = await tprovider.getNetwork();
+            // Prompt chain switch first
             await window.ethereum.request({
               method: "wallet_switchEthereumChain",
               params: [{ chainId: `0x${expectedChainId.toString(16)}` }],
             });
+            // Create provider and signer on correct chain
+            await window.ethereum.request({ method: "eth_requestAccounts" });
+            const tprovider = new Web3Provider(window.ethereum);
+            const tsigner = await tprovider.getSigner();
+            const address = await tsigner.getAddress();
 
             setSigner(tsigner);
             setProvider(tprovider);
