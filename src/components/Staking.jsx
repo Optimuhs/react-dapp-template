@@ -56,23 +56,28 @@ export const Staking = () => {
   };
 
   const userTokens = async (contract, signer) => {
-    const walletAddress = await signer.getAddress();
+    const walletAddress = localStorage.getItem("userAddress");
     console.log(walletAddress);
+    try {
+      const tokenIds = await contract
+        .balanceOf(walletAddress)
+        .then((balance) => {
+          const promises = [];
+          for (let i = 0; i < balance; i++) {
+            promises.push(contract.tokenOfOwnerByIndex(walletAddress, i));
+          }
+          return Promise.all(promises);
+        });
 
-    const tokenIds = await contract.balanceOf(walletAddress).then((balance) => {
-      const promises = [];
-      for (let i = 0; i < balance; i++) {
-        promises.push(contract.tokenOfOwnerByIndex(walletAddress, i));
+      // log the token IDs
+      for (const tokenId of tokenIds) {
+        console.log(
+          `Token ID ${tokenId.toString()} is owned by ${walletAddress}`
+        );
       }
-      return Promise.all(promises);
-    });
-    return tokenIds;
-    console.log(tokenIds, "tokens");
-    // log the token IDs
-    for (const tokenId of tokenIds) {
-      console.log(
-        `Token ID ${tokenId.toString()} is owned by ${walletAddress}`
-      );
+      return tokenIds;
+    } catch (e) {
+      console.log("Error:", e);
     }
   };
 

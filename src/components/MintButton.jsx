@@ -23,6 +23,7 @@ export const MintButton = () => {
           abi,
           signer
         );
+        console.log(erc721Contract);
         const metadata = {
           name: "Optimuhs' Thanks",
           description: "Thank you for testing this out!",
