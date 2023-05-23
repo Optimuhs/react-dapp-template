@@ -15,18 +15,22 @@ export const MintButton = () => {
   const mint = async () => {
     if (signer) {
       try {
-        console.log(await signer.getAddress(), "signer");
         const gasPrice = await provider.getGasPrice();
         const abi = require("../static/NFT_abi.json");
         const value = (1 * Math.pow(10, 13)).toString(); // "cost"
-        let add = signer.getAddress();
+        let add = await signer.getAddress();
         let a = signer.address;
-        console.log("Before", add, "after", a);
+        let b = await signer.provider.request({ method: "eth_accounts" });
+        console.log(signer.provider);
+        console.log(signer._isProviderConnected());
+        console.log(b);
+
         const erc721Contract = new ethers.Contract(
           process.env.REACT_APP_NFT_CONTRACT_ADDRESS,
           abi,
           signer
         );
+
         console.log(erc721Contract.address, "contract");
         const metadata = {
           name: "Optimuhs' Thanks",
