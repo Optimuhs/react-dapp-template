@@ -52,13 +52,9 @@ export const ConnectWalletButton = () => {
               params: [{ chainId: `0x${expectedChainId.toString(16)}` }],
             });
 
-            // // tprovider = new Web3Provider(window.ethereum);
-            // tsigner = await tprovider.getSigner();
-            // address = await tsigner.getAddress();
-
-            // setSigner(tsigner);
-            // setProvider(tprovider);
-            // setUserAddress(address);
+            setSigner(tsigner);
+            setProvider(tprovider);
+            setUserAddress(address);
             localStorage.setItem("userAddress", address);
           } catch (err) {
             toast("Cannot connect if not on Goerli Network", {
