@@ -19,7 +19,9 @@ export const MintButton = () => {
         const gasPrice = await provider.getGasPrice();
         const abi = require("../static/NFT_abi.json");
         const value = (1 * Math.pow(10, 13)).toString(); // "cost"
-        console.log("Before");
+        let add = signer.getAddress();
+        let a = signer.address;
+        console.log("Before", add, "after", a);
         const erc721Contract = new ethers.Contract(
           process.env.REACT_APP_NFT_CONTRACT_ADDRESS,
           abi,
