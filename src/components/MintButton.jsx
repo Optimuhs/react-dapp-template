@@ -15,7 +15,7 @@ export const MintButton = () => {
   const mint = async () => {
     if (signer) {
       try {
-        console.log(signer);
+        console.log(await signer.getAddress());
         const gasPrice = await provider.getGasPrice();
         const abi = require("../static/NFT_abi.json");
         const value = (1 * Math.pow(10, 13)).toString(); // "cost"
@@ -24,7 +24,7 @@ export const MintButton = () => {
           abi,
           signer
         );
-        console.log(erc721Contract);
+        console.log(erc721Contract.address, "contract");
         const metadata = {
           name: "Optimuhs' Thanks",
           description: "Thank you for testing this out!",
@@ -35,8 +35,8 @@ export const MintButton = () => {
           "mintNFT",
           [metadata]
         );
-        // Estimate the gas required for the transaction
 
+        // Estimate the gas required for the transaction
         const gasLimit = await signer.estimateGas({
           to: process.env.REACT_APP_NFT_CONTRACT_ADDRESS,
           data: transactionData,
