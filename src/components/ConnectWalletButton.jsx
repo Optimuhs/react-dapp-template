@@ -36,27 +36,29 @@ export const ConnectWalletButton = () => {
     // Connect to the wallet here and set the wallet state
     if (window.ethereum) {
       if (!signer) {
-        await window.ethereum.request({ method: "eth_requestAccounts" });
-
         let tprovider = new Web3Provider(window.ethereum);
-        let tsigner = await tprovider.getSigner();
-        let address = await tsigner.getAddress();
         const network = await tprovider.getNetwork();
-
+        console.log(network);
         if (network !== expectedChainId) {
           try {
+            await window.ethereum.request({ method: "eth_requestAccounts" });
+
+            let tprovider = new Web3Provider(window.ethereum);
+            let tsigner = await tprovider.getSigner();
+            let address = await tsigner.getAddress();
+            const network = await tprovider.getNetwork();
             await window.ethereum.request({
               method: "wallet_switchEthereumChain",
               params: [{ chainId: `0x${expectedChainId.toString(16)}` }],
             });
 
-            tprovider = new Web3Provider(window.ethereum);
-            tsigner = await tprovider.getSigner();
-            address = await tsigner.getAddress();
+            // // tprovider = new Web3Provider(window.ethereum);
+            // tsigner = await tprovider.getSigner();
+            // address = await tsigner.getAddress();
 
-            setSigner(tsigner);
-            setProvider(tprovider);
-            setUserAddress(address);
+            // setSigner(tsigner);
+            // setProvider(tprovider);
+            // setUserAddress(address);
             localStorage.setItem("userAddress", address);
           } catch (err) {
             toast("Cannot connect if not on Goerli Network", {
