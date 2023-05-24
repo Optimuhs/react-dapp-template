@@ -22,7 +22,6 @@ export const MintButton = () => {
         let a = signer.address;
         let b = await signer.getAddress();
         console.log(signer.provider);
-        console.log(signer._isProviderConnected());
         console.log(b);
 
         const erc721Contract = new ethers.Contract(
