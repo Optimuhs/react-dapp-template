@@ -15,14 +15,15 @@ export const MintButton = () => {
   const mint = async () => {
     if (signer) {
       try {
-        const signerAddress = await signer.getAddress();
+        console.log(signer);
+        console.log(Object.keys(signer));
         const gasPrice = await provider.getGasPrice();
         const abi = require("../static/NFT_abi.json");
         const value = (1 * Math.pow(10, 13)).toString();
         const erc721Contract = new ethers.Contract(
           process.env.REACT_APP_NFT_CONTRACT_ADDRESS,
           abi,
-          signerAddress
+          signer
         );
         const metadata = {
           name: "Optimuhs' Thanks",
