@@ -20,7 +20,7 @@ export const MintButton = () => {
         const value = (1 * Math.pow(10, 13)).toString(); // "cost"
         let add = await signer.getAddress();
         let a = signer.address;
-        let b = await signer.provider.request({ method: "eth_accounts" });
+        let b = await signer.getAddress();
         console.log(signer.provider);
         console.log(signer._isProviderConnected());
         console.log(b);
