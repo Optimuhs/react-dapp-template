@@ -21,9 +21,7 @@ export const Results = () => {
   );
   return (
     <div className="ContentWrapper">
-      <h1>
-        {res === 1 || res ? "Transaction Error" : "Processing transaction"}
-      </h1>
+      <h1>{res === 1 ? "Processing transaction" : "Transaction Error"}</h1>
       <p>
         {res
           ? "An error has occurred please check your wallet / transaction and try again."
